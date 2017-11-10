@@ -1,8 +1,0 @@
-1 rem maximum of two numbers
-2 input s
-3 input t
-4 if s>=t goto 7
-5 print t
-6 goto @8
-7 print s
-8 end
