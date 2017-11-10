@@ -1,0 +1,24 @@
+/*SHL syntax checker tester*/
+#include<stdio.h>
+#include<string.h>
+#include"syntax.h"
+void main(int argc,char **argv)
+{
+	FILE *fp = NULL;
+	if( !checkSyntax("test.shl") )
+	{
+		printf("OK\n");
+	}
+	else
+	{
+		printf("Messsages : \n");
+		fp = fopen(error_details,"r");
+		char c;
+		while(!feof(fp))
+		{
+			c = fgetc(fp);
+			putchar(c);
+		}
+		printf("\n");
+    }
+}
