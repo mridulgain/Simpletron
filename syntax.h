@@ -9,7 +9,7 @@ description for checkSyntax(): checks SHL syntax
 	return:
 		returns 1 if file contains valid shl
 		returns 0 if any syntactical error is found in the given shl
-	also generates a file named "error.det" with error details for given file
+	also generates a file named "error.det" reporting detected errors.
 */
 int validKey(char *);
 /*
