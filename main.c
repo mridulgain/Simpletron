@@ -5,7 +5,7 @@
 void main(int argc,char **argv)
 {
 	FILE *fp = NULL;
-	if( !checkSyntax("test.shl") )
+	if( !checkSyntax("test1.shl") )
 	{
 		printf("OK\n");
 	}

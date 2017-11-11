@@ -3,6 +3,6 @@
 3 input t
 4 if s>=t goto 7
 5 print t
-6 end
+6 goto 8
 7 print s
-8 goto 6
+8 end

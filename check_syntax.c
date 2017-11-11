@@ -55,14 +55,15 @@ int checkSyntax(char *fnam)
 					else
 					{
 						k_type = validKey(tok);
+						if(k_type == 6)
+							end_counter++;
 						strcpy(kword,tok);
 					}
 					break;
 				}
 				case 3 ://expected argument validation
 				{
-					if(k_type==1)//rem
-						;
+					if(k_type==1);//rem
 					else if(k_type==2)//input,print
 					{
 						if(!validVar(tok))
@@ -89,7 +90,7 @@ int checkSyntax(char *fnam)
 						{
 							if(!validVar(temp))
 							{
-								fprintf(fout,"Invalid variable name : %s\n",temp);
+								fprintf(fout,"Invalid variable name in expression after %s : %s\n",kword,temp);
 								flag++;
 							}
 							temp = strtok(NULL, de);
@@ -109,7 +110,7 @@ int checkSyntax(char *fnam)
 				}
 				case 4 :
 				{
-					if(k_type == 1);
+					if(k_type == 1);//rem
 					else if(k_type == 5)//if
 					{
 						if(strcmp(tok, "goto"))
@@ -118,7 +119,7 @@ int checkSyntax(char *fnam)
 							flag++;
 						}
 					}
-					else
+					else//print,let,input,end
 					{
 						fprintf(fout,"Excess argument after %s : %s\n",kword,tok);
 						flag++;
@@ -150,7 +151,7 @@ int checkSyntax(char *fnam)
 					fprintf(fout,"Excess argument after %s : %s\n",kword,tok);
 					flag++;
 			}
-			printf("%s ", tok);
+			printf("%s ", tok);//x
 			tok = strtok(NULL,d);
 		}
 		if(tok_count != 0) //x
@@ -158,6 +159,16 @@ int checkSyntax(char *fnam)
 			if(flag==0)printf("\t\t(~~OK~~)");//x
 			puts("");//x
 		}
+	}
+	if(end_counter == 0)
+	{
+		fprintf(fout,"Parsing completes without getting any 'end'\n");
+		flag++;
+	}
+	else if(end_counter > 1)
+	{
+		fprintf(fout,"Multiple 'end' encountered\n");
+		flag++;
 	}
 	fclose(fin);
 	fclose(fout);
