@@ -36,8 +36,7 @@ int checkSyntax(char *fnam)
 				case 1 ://line number validation
 				{
 					int temp = atoi(tok);
-					//printf("int %d, str %s,prev line %d",temp,tok,line_no);
-					if(temp - line_no != 1)
+					if(!validNum(tok) || temp - line_no != 1)
 					{
 						fprintf(fout,"Invalid line number : %s\n",tok);
 						flag++;
@@ -74,8 +73,7 @@ int checkSyntax(char *fnam)
 					}
 					else if(k_type==3)//goto
 					{
-						int temp = atoi(tok);
-						if(temp == 0)
+						if(!validNum(tok))
 						{
 							fprintf(fout,"Invalid argument after 'goto' : %s\n",tok);
 							flag++;	
@@ -128,13 +126,12 @@ int checkSyntax(char *fnam)
 				}
 				case 5 :
 				{
-					if(k_type == 1);
-					else if(k_type == 5)
+					if(k_type == 1);//rem
+					else if(k_type == 5)//if....goto
 					{
-						int temp = atoi(tok);
-						if(temp == 0)
+						if(!validNum(tok))
 						{
-							fprintf(fout,"Invalid argument after 'if...goto' : %s\n",tok);
+							fprintf(fout,"Invalid argument after 'goto' : %s\n",tok);
 							flag++;	
 						}
 					}
@@ -191,9 +188,20 @@ int validKey(char *kword)
 	else
 		return 0;
 }
+
 int validVar(char *var)
 {
 	if(strlen(var) > 1) return 0;
 	if(var[0] < 'a' || var[0] > 'z')return 0;
+	return 1;
+}
+int validNum(char *n)
+{
+	while(*n != '\0')
+	{
+		if(*n < '0' || *n > '9')
+			return 0;
+		n++;
+	}
 	return 1;
 }

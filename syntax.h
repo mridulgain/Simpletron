@@ -33,3 +33,10 @@ int validVar(char *);
 	description of validVar() : verifies the SHL variable name
 	rule : small caps one alphabet only
 */
+int validNum(char *);
+/*
+	description of validNum() : verifies if inputed string contains valid integer or not
+	returns 
+		1 if valid integer
+		0 otherwise
+*/
