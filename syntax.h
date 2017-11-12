@@ -40,3 +40,11 @@ int validNum(char *);
 		1 if valid integer
 		0 otherwise
 */
+int validOp(char *);
+/*
+	description of validOp() : verifies if given string is valid operatior or not
+	returns
+		1~ valid
+		0~ invalid
+	allowed operator list : "==" , ">=", "<=", "<", ">", "="  
+*/
