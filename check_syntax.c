@@ -20,12 +20,13 @@ int checkSyntax(char *fnam)
 	
 	//going through the file
 	char line[100];
-	int line_no = 0, end_counter = 0;
+	int line_no = 0, eoshl = 0;//end of SHL
 	while( fgets(line,100,fin) != NULL )
 	{
 		char * tok = NULL, * d = " \t\n";
 		int tok_count = 0, k_type = -1;
 		char temp_line[100], kword[10];//temporary
+
 		strcpy(temp_line,line);//x
 		tok = strtok(line , d);
 		while(tok != NULL)
@@ -54,8 +55,13 @@ int checkSyntax(char *fnam)
 					else
 					{
 						k_type = validKey(tok);
+						if(eoshl)
+						{
+							fprintf(fout,"No instruction allowed after 'end'\n");
+							++flag;	
+						}						
 						if(k_type == 6)
-							end_counter++;
+							eoshl++;
 						strcpy(kword,tok);
 					}
 					break;
@@ -157,14 +163,9 @@ int checkSyntax(char *fnam)
 			puts("");//x
 		}
 	}
-	if(end_counter == 0)
+	if(eoshl == 0)
 	{
 		fprintf(fout,"Parsing completes without getting any 'end'\n");
-		flag++;
-	}
-	else if(end_counter > 1)
-	{
-		fprintf(fout,"Multiple 'end' encountered\n");
 		flag++;
 	}
 	fclose(fin);

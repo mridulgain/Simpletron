@@ -1,6 +1,3 @@
-** Report for 'test2.shl' **
-Invalid line number : 1@
-Excess argument after input : u
-Invalid line number : 5
-Invalid line number : 5
-Invalid argument after 'goto' : 8$
+** Report for 'test1.shl' **
+No instruction allowed after 'end'
+No instruction allowed after 'end'

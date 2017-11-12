@@ -5,7 +5,8 @@
 void main(int argc,char **argv)
 {
 	FILE *fp = NULL;
-	if( !checkSyntax("test2.shl") )
+	int error_count;
+	if( !checkSyntax("test1.shl") )
 	{
 		printf("OK\n");
 	}
