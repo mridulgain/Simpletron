@@ -14,6 +14,12 @@ description for checkSyntax(): checks SHL syntax
 		 	 ~ no errors found in the given shl
 	also generates a file named "error.det" reporting detected errors.
 */
+void genError(char *);
+/*
+	description for genError() : error generator
+	accepts an error message in form of string and adds it to the error report.
+	also increases the errror counter by 1;
+*/
 int validKey(char *);
 /*
 	description for validKey(): checks if the inputed token is a valid keyword or not 
@@ -47,4 +53,11 @@ int validOp(char *);
 		1~ valid
 		0~ invalid
 	allowed operator list : "==" , ">=", "<=", "<", ">", "="  
+*/
+int isOp(char);
+/*
+	description of isOp() : used by validOp() 
+	returns
+		1 if given charecter is any kind of operator
+		0 otherwise
 */

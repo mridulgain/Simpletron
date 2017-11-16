@@ -127,12 +127,15 @@ int checkSyntax(char *fnam)
 							}
 							p++;
 						}
-						char * err_msg = arithExpValidate(tok);
-						if(err_msg)
+						if(exp_flag)
 						{
-							fprintf(fout,"Expression Validator says : %s\n",err_msg);
-							errorFlag++;
-							free(err_msg);
+							char * err_msg = arithExpValidate(tok);
+							if(err_msg)
+							{
+								fprintf(fout,"Expression Validator says : %s\n",err_msg);
+								errorFlag++;
+								free(err_msg);
+							}
 						}
 					}
 					else if(k_type == 6)//end
