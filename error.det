@@ -1,5 +1,6 @@
 ** Report for 'test1.shl' **
 Invalid operator detected in expression after if : =>
+Invalid variable name in expression after if : {
 Expression Validator says : Equal to error detected.
 No instruction is allowed after 'end'
 No instruction is allowed after 'end'
